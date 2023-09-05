@@ -1,6 +1,6 @@
 export interface Alunos {
   _id: number
-  name: string;
+  nome: string;
   email: string;
   curso: string;
 }

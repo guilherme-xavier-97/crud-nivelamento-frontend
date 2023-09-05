@@ -16,7 +16,7 @@ export class AlunosComponent  {
 
   alunos: Observable<Alunos[]>;
 
-  displayedColumns = ['name', 'email', 'curso'];
+  displayedColumns = ['nome', 'email', 'curso'];
 
   //Como no Service tem o @Injectable, a classe stá habilitada a injetar dependencia. Pra injetar, eu faço assim, via construtor
   constructor(private alunosService: AlunosService) {

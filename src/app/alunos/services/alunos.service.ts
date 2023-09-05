@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AlunosService {
 
-  private URL = '../../../assets/alunos.json';
+  //private URL = '/assets/alunos.json';
+  private URL = 'http://localhost:8080/api/alunos'
 
   constructor(private httpClient: HttpClient) { }
 
