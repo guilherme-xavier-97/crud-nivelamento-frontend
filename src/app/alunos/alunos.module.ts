@@ -6,6 +6,7 @@ import { AlunosComponent } from './alunos/alunos.component';
 import { MatTableModule } from '@angular/material/table';
 
 
+
 @NgModule({
   declarations: [
     AlunosComponent

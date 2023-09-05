@@ -1,6 +1,8 @@
 import { Alunos } from './../model/aluno';
 import { Component } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
+import { AlunosService } from '../services/alunos.service';
+import { Observable } from 'rxjs';
 
 
 
@@ -12,15 +14,13 @@ import {MatTableModule} from '@angular/material/table';
 
 export class AlunosComponent  {
 
-  alunos: Alunos[] = [
-    {_id: 1, name: 'Guilherme', email: 'teste@teste', curso: 'ADS'},
-    {_id: 2, name: 'Juliana', email: 'teste@teste', curso: 'RH'}
-  ];
+  alunos: Observable<Alunos[]>;
 
   displayedColumns = ['name', 'email', 'curso'];
 
-  constructor() {
-    //this.alunos
+  //Como no Service tem o @Injectable, a classe stá habilitada a injetar dependencia. Pra injetar, eu faço assim, via construtor
+  constructor(private alunosService: AlunosService) {
+    this.alunos = this.alunosService.list();
 
   }
 
