@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
 import { AlunosService } from '../services/alunos.service';
 import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -16,12 +17,20 @@ export class AlunosComponent  {
 
   alunos: Observable<Alunos[]>;
 
-  displayedColumns = ['nome', 'email', 'curso'];
+  displayedColumns = ['nome', 'email', 'curso', 'btn_update'];
 
   //Como no Service tem o @Injectable, a classe stá habilitada a injetar dependencia. Pra injetar, eu faço assim, via construtor
-  constructor(private alunosService: AlunosService) {
+  constructor(
+    private alunosService: AlunosService,
+    private router: Router,
+    private route: ActivatedRoute
+    ) {
     this.alunos = this.alunosService.list();
 
+  }
+
+  onCreate() {
+    this.router.navigate(['novo-aluno'], {relativeTo: this.route})
   }
 
 }
