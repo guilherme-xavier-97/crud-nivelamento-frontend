@@ -24,12 +24,14 @@ export class AlunosService {
 
   save(record: Alunos) {
     if(record.id) {
-      console.log('atualizou');
       return this.update(record);
     }
-    console.log('criou');
     return this.create(record);
 
+  }
+
+  delete(id: number) {
+    return this.httpClient.delete<Alunos>(`${this.URL}/${id}`);
   }
 
   private create(record: Alunos) {
@@ -39,4 +41,6 @@ export class AlunosService {
   private update(record: Alunos) {
     return this.httpClient.put<Alunos>(`${this.URL}/${record.id}`, record);
   }
+
+
 }

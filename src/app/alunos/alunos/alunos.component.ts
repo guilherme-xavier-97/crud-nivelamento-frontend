@@ -4,6 +4,7 @@ import {MatTableModule} from '@angular/material/table';
 import { AlunosService } from '../services/alunos.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -23,21 +24,31 @@ export class AlunosComponent  {
   constructor(
     private alunosService: AlunosService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
     ) {
     this.alunos = this.alunosService.readAll();
   }
 
   onCreate() {
-    this.router.navigate(['novo-aluno'], {relativeTo: this.route})
+    this.router.navigate(['novo-aluno'], {relativeTo: this.route});
   }
 
   onUpdate(aluno: Alunos) {
-    this.router.navigate(['editar-aluno', aluno.id], {relativeTo: this.route})
+    this.router.navigate(['editar-aluno', aluno.id], {relativeTo: this.route});
   }
 
-  onDelete() {
+  onDelete(aluno: Alunos) {
+    this.alunosService.delete(aluno.id).subscribe(
+      () => {
+        this.snackBar.open('Aluno removido com sucesso!', '', { duration: 5000})
+      });
+      this.refresh();
 
+  }
+
+  refresh() {
+    this.alunos = this.alunosService.readAll();
   }
 
 }
