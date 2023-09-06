@@ -25,7 +25,7 @@ export class AlunosComponent  {
     private router: Router,
     private route: ActivatedRoute
     ) {
-    this.alunos = this.alunosService.list();
+    this.alunos = this.alunosService.readAll();
 
   }
 

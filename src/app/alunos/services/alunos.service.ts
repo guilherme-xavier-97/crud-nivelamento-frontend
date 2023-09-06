@@ -14,7 +14,13 @@ export class AlunosService {
 
   /*por padrão, o get() retorna um Observable, ou seja, um dado de um tipo qualquer, mas que será carregado de forma assincrona,
   como os Promises do JS. Mas aqui eu "forcei" a retornar um tipo Alunos[]*/
-  list() {
+  readAll() {
     return this.httpClient.get<Alunos[]>(this.URL);
   }
+
+  create(record: Alunos) {
+    return this.httpClient.post<Alunos>(this.URL, record);
+  }
+
+
 }

@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { AlunosRoutingModule } from './alunos-routing.module';
 import { AlunosComponent } from './alunos/alunos.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatIconModule } from '@angular/material/icon';
-import { AlunosFormComponent } from './alunos-form/alunos-form.component';
-import { MatCardModule } from '@angular/material/card';
+import { AlunosFormComponent } from './alunos-form/alunos-form.component'
+import { AppMaterialImportsModule} from '../shared/app-material-imports/app-material-imports.module'
+
 
 
 
@@ -15,12 +14,11 @@ import { MatCardModule } from '@angular/material/card';
     AlunosComponent,
     AlunosFormComponent
   ],
+
   imports: [
     CommonModule,
+    AppMaterialImportsModule,
     AlunosRoutingModule,
-    MatTableModule,
-    MatIconModule,
-    MatCardModule
   ]
 })
 export class AlunosModule { }
