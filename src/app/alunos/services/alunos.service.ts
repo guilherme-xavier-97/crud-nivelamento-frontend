@@ -18,9 +18,25 @@ export class AlunosService {
     return this.httpClient.get<Alunos[]>(this.URL);
   }
 
-  create(record: Alunos) {
+  readOne(id: number) {
+    return this.httpClient.get<Alunos>(`${this.URL}/${id}`)
+  }
+
+  save(record: Alunos) {
+    if(record.id) {
+      console.log('atualizou');
+      return this.update(record);
+    }
+    console.log('criou');
+    return this.create(record);
+
+  }
+
+  private create(record: Alunos) {
     return this.httpClient.post<Alunos>(this.URL, record);
   }
 
-
+  private update(record: Alunos) {
+    return this.httpClient.put<Alunos>(`${this.URL}/${record.id}`, record);
+  }
 }

@@ -24,13 +24,13 @@
   </ng-container>
 
 
-  <ng-container matColumnDef="btn_update">
+  <ng-container matColumnDef="buttons">
     <mat-header-cell *matHeaderCellDef>
 
     </mat-header-cell>
 
-    <mat-cell *matCellDef="let curso">
-      <button mat-icon-button color="primary" aria-label="update">
+    <mat-cell *matCellDef="let aluno">
+      <button mat-icon-button color="primary" aria-label="update" (click)="onUpdate(aluno)">
         <mat-icon>edit</mat-icon>
       </button>
 

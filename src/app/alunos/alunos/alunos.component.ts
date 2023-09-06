@@ -17,7 +17,7 @@ export class AlunosComponent  {
 
   alunos: Observable<Alunos[]>;
 
-  displayedColumns = ['nome', 'email', 'curso', 'btn_update'];
+  displayedColumns = ['nome', 'email', 'curso', 'buttons'];
 
   //Como no Service tem o @Injectable, a classe stá habilitada a injetar dependencia. Pra injetar, eu faço assim, via construtor
   constructor(
@@ -26,11 +26,18 @@ export class AlunosComponent  {
     private route: ActivatedRoute
     ) {
     this.alunos = this.alunosService.readAll();
-
   }
 
   onCreate() {
     this.router.navigate(['novo-aluno'], {relativeTo: this.route})
+  }
+
+  onUpdate(aluno: Alunos) {
+    this.router.navigate(['editar-aluno', aluno.id], {relativeTo: this.route})
+  }
+
+  onDelete() {
+
   }
 
 }
