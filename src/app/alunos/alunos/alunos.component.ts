@@ -43,12 +43,9 @@ export class AlunosComponent  {
       () => {
         this.snackBar.open('Aluno removido com sucesso!', '', { duration: 5000})
       });
-      this.refresh();
+      //this.refresh();
+      window.location.reload();
 
-  }
-
-  refresh() {
-    this.alunos = this.alunosService.readAll();
   }
 
 }
