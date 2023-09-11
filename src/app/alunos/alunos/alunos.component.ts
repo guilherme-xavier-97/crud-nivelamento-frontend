@@ -27,6 +27,7 @@ export class AlunosComponent  {
     private route: ActivatedRoute,
     private snackBar: MatSnackBar
     ) {
+
     this.alunos = this.alunosService.readAll();
   }
 
@@ -43,7 +44,6 @@ export class AlunosComponent  {
       () => {
         this.snackBar.open('Aluno removido com sucesso!', '', { duration: 5000})
       });
-      //this.refresh();
       window.location.reload();
 
   }
